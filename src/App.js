@@ -9,7 +9,7 @@ function App() {
 
                 </Route>
                 <Route>
-                    
+
                 </Route>
             </Switch>
         </div>
