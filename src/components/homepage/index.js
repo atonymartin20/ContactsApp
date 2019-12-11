@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../navbar';
 import withStyles from '@material-ui/core/styles/withStyles';
+import ContactList from '../contact/contactList.js';
 
 const styles = theme => ({
     homepageDiv: {
@@ -26,6 +27,7 @@ class Homepage extends React.Component {
             <div className={classes.homepageDiv}>
                 <Navbar />
                 <div className={classes.homepageSpacingDiv}>
+                    <ContactList />
                 </div>
             </div>
         )
