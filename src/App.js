@@ -1,15 +1,16 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Navbar from './components/navbar';
+import Homepage from './components/homepage';
+
 function App() {
     return (
         <div>
             <Switch>
                 <Route exact path='/'>
-                    <Navbar />
+                    <Homepage />
                 </Route>
                 <Route>
-
+                    <Homepage />
                 </Route>
             </Switch>
         </div>
