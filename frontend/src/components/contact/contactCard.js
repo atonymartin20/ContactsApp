@@ -26,24 +26,31 @@ const styles = theme => ({
         width: '25%',
         textAlign: 'center',
         padding: '5px 10px',
-        border: '2px solid blue',
         [theme.breakpoints.down(1400)]: {
             width: '32.5%'
         },
         [theme.breakpoints.down(1050)]: {
             width: '40%',
         },
+        [theme.breakpoints.down(950)]: {
+            width: '60%',
+        },
+        [theme.breakpoints.down(500)]: {
+            width: '100%',
+        },
     },
     phoneNumber: {
         width: '20%',
         textAlign: 'center',
         padding: '5px 10px',
-        border: '2px solid orange',
         [theme.breakpoints.down(1400)]: {
             width: '22.5%'
         },
         [theme.breakpoints.down(1052)]: {
             width: '40%',
+        },
+        [theme.breakpoints.down(500)]: {
+            display: 'none',
         },
     },
     email: {
@@ -52,7 +59,6 @@ const styles = theme => ({
         fontSize: '1.5rem',
         overflowWrap: 'break-word',
         padding: '5px 10px',
-        border: '2px solid green',
         [theme.breakpoints.down(1400)]: {
             width: '30%'
         },
@@ -65,7 +71,6 @@ const styles = theme => ({
         textAlign: 'center',
         fontSize: '1.5rem',
         padding: '5px 10px',
-        border: '2px solid red',
         [theme.breakpoints.down(1400)]: {
             display: 'none'
         }
@@ -74,12 +79,14 @@ const styles = theme => ({
         width: '5%',
         textAlign: 'center',
         padding: '5px 10px',
-        border: '2px solid purple',
         [theme.breakpoints.down(1400)]: {
             width: '7.5%'
         },
         [theme.breakpoints.down(1052)]: {
             width: '10%',
+        },
+        [theme.breakpoints.down(950)]: {
+            display: 'none',
         },
     },
     iconStyling: {

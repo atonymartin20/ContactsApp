@@ -11,34 +11,39 @@ const styles = theme => ({
         fontSize: '2.0rem',
         borderBottom: '2px dashed black',
         paddingBottom: 5,
-        border: '2px solid black',
     },
     name: {
         width: '25%',
         textAlign: 'center',
-        border: '2px solid blue',
         [theme.breakpoints.down(1400)]: {
             width: '32.5%'
         },
         [theme.breakpoints.down(1052)]: {
             width: '40%',
         },
+        [theme.breakpoints.down(950)]: {
+            width: '60%',
+        },
+        [theme.breakpoints.down(500)]: {
+            width: '100%',
+        },
     },
     phoneNumber: {
         width: '20%',
         textAlign: 'center',
-        border: '2px solid orange',
         [theme.breakpoints.down(1400)]: {
             width: '22.5%'
         },
         [theme.breakpoints.down(1052)]: {
             width: '40%',
         },
+        [theme.breakpoints.down(500)]: {
+            display: 'none',
+        },
     },
     email: {
         width: '22.5%',
         textAlign: 'center',
-        border: '2px solid green',
         [theme.breakpoints.down(1400)]: {
             width: '30%'
         },
@@ -49,7 +54,6 @@ const styles = theme => ({
     notes: {
         width: '22.5%',
         textAlign: 'center',
-        border: '2px solid red',
         [theme.breakpoints.down(1400)]: {
             display: 'none'
         },
