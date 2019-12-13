@@ -6,10 +6,86 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 
 // Icons
-import RefreshIcon from '@material-ui/icons/Refresh';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const styles = theme => ({
-
+    container: {
+        width: '100%',
+        padding: 0,
+        margin: 0,
+        display: 'flex',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        fontSize: '1.75rem',
+        marginBottom: 3,
+        minHeight: 35,
+    },
+    name: {
+        width: '25%',
+        textAlign: 'center',
+        padding: '5px 10px',
+        border: '2px solid blue',
+        [theme.breakpoints.down(1400)]: {
+            width: '32.5%'
+        },
+        [theme.breakpoints.down(1050)]: {
+            width: '40%',
+        },
+    },
+    phoneNumber: {
+        width: '20%',
+        textAlign: 'center',
+        padding: '5px 10px',
+        border: '2px solid orange',
+        [theme.breakpoints.down(1400)]: {
+            width: '22.5%'
+        },
+        [theme.breakpoints.down(1052)]: {
+            width: '40%',
+        },
+    },
+    email: {
+        width: '22.5%',
+        textAlign: 'center',
+        fontSize: '1.5rem',
+        overflowWrap: 'break-word',
+        padding: '5px 10px',
+        border: '2px solid green',
+        [theme.breakpoints.down(1400)]: {
+            width: '30%'
+        },
+        [theme.breakpoints.down(1052)]: {
+            display: 'none',
+        },
+    },
+    notes: {
+        width: '22.5%',
+        textAlign: 'center',
+        fontSize: '1.5rem',
+        padding: '5px 10px',
+        border: '2px solid red',
+        [theme.breakpoints.down(1400)]: {
+            display: 'none'
+        }
+    },
+    icons: {
+        width: '5%',
+        textAlign: 'center',
+        padding: '5px 10px',
+        border: '2px solid purple',
+        [theme.breakpoints.down(1400)]: {
+            width: '7.5%'
+        },
+        [theme.breakpoints.down(1052)]: {
+            width: '10%',
+        },
+    },
+    iconStyling: {
+        width: 25,
+        height: 25,
+    }
 });
 
 class ContactCard extends React.Component {
@@ -18,16 +94,23 @@ class ContactCard extends React.Component {
         firstName: this.props.firstName,
         lastName: this.props.lastName,
         phoneNumber: this.props.phoneNumber,
-        email: this.props.email
+        email: this.props.email,
+        notes: this.props.notes,
     }
 
     render() {
         const { classes } = this.props;
-        const { firstName, lastName, phoneNumber, email } = this.state;
+        const { firstName, lastName, phoneNumber, email, notes } = this.state;
 
         return (
-            <Card>
-                {firstName} {lastName} {phoneNumber} {email}
+            <Card className={classes.container}>
+                <p className={classes.name}>{firstName} {lastName}</p>
+                <p className={classes.phoneNumber}>{phoneNumber}</p>
+                <p className={classes.email}>{email}</p>
+                <p className={classes.notes}>{notes}</p>
+                <p className={classes.icons}><MoreVertIcon className={classes.iconStyling}/></p>
+                <p className={classes.icons}><DeleteIcon className={classes.iconStyling}/></p>
+                {/* <EditIcon /> */}
             </Card>
         )
     }

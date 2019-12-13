@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../navbar';
 import withStyles from '@material-ui/core/styles/withStyles';
 import ContactList from '../contact/contactList.js';
+import ContactListLabels from '../contact/contactListLabels.js'
 
 const styles = theme => ({
     homepageDiv: {
@@ -16,6 +17,7 @@ const styles = theme => ({
         borderRadius: '2%',
         backgroundColor: '#f8fbfd',
         height: 500,
+        paddingTop: 15,
     },
 });
 
@@ -27,6 +29,7 @@ class Homepage extends React.Component {
             <div className={classes.homepageDiv}>
                 <Navbar />
                 <div className={classes.homepageSpacingDiv}>
+                    <ContactListLabels />
                     <ContactList />
                 </div>
             </div>
