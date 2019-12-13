@@ -1,3 +1,16 @@
-## Contacts App
+# Contacts App
 
-This was just a quick project 
+This was just a quick and small project.
+
+## Tech Stack
+### Frontend
+* React
+* ContextAPI
+
+### Backend
+* Knex
+* Node.js
+* PostgresQL
+
+# Contributing
+Please do not put anyone's actual contact details in this app.  This app is designed as a project only and not to be used to actually store your contacts.
