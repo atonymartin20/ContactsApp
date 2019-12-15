@@ -13,3 +13,5 @@ ReactDOM.render(
 );
 
 // TO DO LIST:
+// 1. Add a add contact route
+// 2. Build add contact page
