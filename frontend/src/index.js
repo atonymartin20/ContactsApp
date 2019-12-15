@@ -15,3 +15,4 @@ ReactDOM.render(
 // TO DO LIST:
 // 1. Add a add contact route
 // 2. Build add contact page
+// 3. Create on click for redirect on Edit button
