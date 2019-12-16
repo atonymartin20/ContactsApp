@@ -21,3 +21,4 @@ ReactDOM.render(
 // 6. Add View one contact view
 // 7. Add edit contact view
 // 8. Add delete modal
+// 9. Complete in theory front end
