@@ -20,3 +20,4 @@ ReactDOM.render(
 // 5. Create on Click for redirect on clicking contact card not in icons
 // 6. Add View one contact view
 // 7. Add edit contact view
+// 8. Add delete modal
