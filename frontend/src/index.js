@@ -27,3 +27,4 @@ ReactDOM.render(
 // 12. add cors, bcryptjs, express, helmet, knex, pg, sqlite3 as dependencies
 // 13. add nodemon as dev Dependency
 // 14. create knexfile.js
+// 15. add index.js
