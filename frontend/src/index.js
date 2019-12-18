@@ -20,7 +20,6 @@ ReactDOM.render(
 );
 
 // TO DO LIST:
-// 1. Complete functions in context
 // 2. Build add contact page
 // 3. Create on click for redirect on Edit button
 // 4. Create on Click for redirect on delete button

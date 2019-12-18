@@ -51,14 +51,38 @@ export default class AppProvider extends Component {
                                 cb(index);
                             })
                             .catch(err => {
-                                console.log('error adding contact')
+                                console.log('error adding contact', err)
                             })
                     },
-                    editContact: () => {
-
+                    editContact: (contactInfo, index, cb) => {
+                        const contactID = this.state.contacts[index].id;
+                        const endpoint = `/contacts/${contactID}`;
+                        axios
+                            .put(endpoint, contactInfo)
+                            .then(res => {
+                                const contact = res.data;
+                                const contacts = this.state.contacts;
+                                contacts[index] = contact;
+                                localStorage.setItem('leagues', JSON.stringify(contacts));
+                                this.setState({ contacts });
+                                cb();
+                            })
+                            .catch(err => {
+                                console.log('error editing contact', err);
+                            })
                     },
-                    deleteContact: () => {
-
+                    deleteContact: (index, cb) => {
+                        const contactID = this.state.contacts[index].id;
+                        const endpoint = `/contacts/${contactID}`;
+                        axios
+                            .delete(endpoint)
+                            .then(res => {
+                                console.log(res.data);
+                                this.setState({ contacts: res.data})
+                            })
+                            .catch(err => {
+                                console.log('error deleting contact', err)
+                            })
                     },
                 }}
             >
