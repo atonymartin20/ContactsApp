@@ -13,6 +13,7 @@ function App() {
                 <Route exact path='/addContact'>
                     <AddContact />
                 </Route>
+
                 <Route>
                     <Homepage />
                 </Route>

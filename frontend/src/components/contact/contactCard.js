@@ -4,9 +4,9 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 // Icons
-import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
@@ -107,7 +107,7 @@ class ContactCard extends React.Component {
 
     render() {
         const { classes } = this.props;
-        const { firstName, lastName, phoneNumber, email, notes } = this.state;
+        const { firstName, lastName, phoneNumber, email, notes, id } = this.state;
 
         return (
             <Card className={classes.container}>
@@ -115,9 +115,8 @@ class ContactCard extends React.Component {
                 <p className={classes.phoneNumber}>{phoneNumber}</p>
                 <p className={classes.email}>{email}</p>
                 <p className={classes.notes}>{notes}</p>
-                <p className={classes.icons}><MoreVertIcon className={classes.iconStyling}/></p>
-                <p className={classes.icons}><DeleteIcon className={classes.iconStyling}/></p>
-                {/* <EditIcon /> */}
+                <p className={classes.icons}><Link to={{ pathname: '/addContact', state: {editFirstName: firstName, editLastName: lastName, editId: id, editPhoneNumber: phoneNumber, editEmail: email, editNotes: notes}}}><Button><MoreVertIcon className={classes.iconStyling}/></Button></Link></p>
+                <p className={classes.icons}><Button href='/addContact' data={this.state}><DeleteIcon className={classes.iconStyling}/></Button></p>
             </Card>
         )
     }
