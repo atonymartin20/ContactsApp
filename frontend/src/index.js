@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
+import axios from 'axios';
+import AppProvider from './components/context/appContext.js';
 
+axios.defaults.baseURL = process.env.NODE_ENV === 'production'
+? 'https://league-management.herokuapp.com'
+: 'http://localhost:4000';
 
 ReactDOM.render(
-    <Router>
-        <App />
-    </Router>,
+    <AppProvider>
+        <Router>
+            <App />
+        </Router>
+    </AppProvider>,
     document.getElementById('root')
 );
 
@@ -27,3 +34,4 @@ ReactDOM.render(
 // 13. add nodemon as dev Dependency
 // 14. create knexfile.js
 // 15. add index.js
+// 16. Update heroku in this index.js and in README.md

@@ -6,7 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Navbar from '../navbar';
 import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const styles = theme => ({
     container: {
@@ -147,4 +148,4 @@ class AddContact extends React.Component {
     }
 }
 
-export default withStyles(styles)(ContactCard);
+export default withStyles(styles)(AddContact);
