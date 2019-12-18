@@ -54,7 +54,12 @@ export default class AppProvider extends Component {
                                 console.log('error adding contact')
                             })
                     },
+                    editContact: () => {
 
+                    },
+                    deleteContact: () => {
+
+                    },
                 }}
             >
                 {this.props.children}
