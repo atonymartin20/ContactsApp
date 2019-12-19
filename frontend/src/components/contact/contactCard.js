@@ -1,10 +1,10 @@
 import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import { AppContext } from '../context/appContext.js';
+import DeleteModal from './deleteContact.js';
 
 // Icons
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -104,23 +104,44 @@ class ContactCard extends React.Component {
         email: this.props.email,
         notes: this.props.notes,
         delete: false,
+        index: this.props.index,
     }
 
+    flipDelete = event => {
+        event.preventDefault();
+        this.setState({
+            delete: !this.state.delete
+        })
+    }
+
+    deleteNote = event => {
+        event.preventDefault();
+        const { index } = this.state;
+        this.context.deleteContact(index);
+        window.location.href='/';
+
+    }
+    
     render() {
         const { classes } = this.props;
         const { firstName, lastName, phoneNumber, email, notes, id } = this.state;
 
         return (
-            <Card className={classes.container}>
-                <p className={classes.name}>{firstName} {lastName}</p>
-                <p className={classes.phoneNumber}>{phoneNumber}</p>
-                <p className={classes.email}>{email}</p>
-                <p className={classes.notes}>{notes}</p>
-                <p className={classes.icons}><Link to={{ pathname: '/editContact', state: {editFirstName: firstName, editLastName: lastName, editId: id, editPhoneNumber: phoneNumber, editEmail: email, editNotes: notes}}}><Button><MoreVertIcon className={classes.iconStyling}/></Button></Link></p>
-                <p className={classes.icons}><Button href='/deleteContact' data={this.state}><DeleteIcon className={classes.iconStyling}/></Button></p>
-            </Card>
+            <>
+                <Card className={classes.container}>
+                    <p className={classes.name}>{firstName} {lastName}</p>
+                    <p className={classes.phoneNumber}>{phoneNumber}</p>
+                    <p className={classes.email}>{email}</p>
+                    <p className={classes.notes}>{notes}</p>
+                    <p className={classes.icons}><Link to={{ pathname: '/editContact', state: { editFirstName: firstName, editLastName: lastName, editId: id, editPhoneNumber: phoneNumber, editEmail: email, editNotes: notes } }}><Button><MoreVertIcon className={classes.iconStyling} /></Button></Link></p>
+                    <p className={classes.icons}><Button onClick={this.flipDelete}><DeleteIcon className={classes.iconStyling} /></Button></p>
+                </Card>
+                {this.state.delete ? <DeleteModal name={`${firstName} ${lastName}`} delete={this.deleteNote} close={this.flipDelete} /> : null }
+            </>
         )
     }
 }
+
+ContactCard.contextType = AppContext;
 
 export default withStyles(styles)(ContactCard);

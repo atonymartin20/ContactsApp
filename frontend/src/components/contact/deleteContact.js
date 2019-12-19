@@ -18,7 +18,7 @@ const styles = theme => ({
     },
     container: {
         position: 'fixed',
-        zIndex: 99,
+        zIndex: 1,
         left: 0,
         top: 0,
         width: '100%',
@@ -27,10 +27,18 @@ const styles = theme => ({
         backgroundColor: 'rgba(43, 43, 43, 0.3)'
     },
     deleteButton: {
-
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        width: '40%',
+        height: 45,
+        border: '1px solid darkgrey',
+        borderRadius: '5px',
+        backgroundColor: '#000080',
+        color: 'white',
     },
     message: {
         fontSize: '1.5rem',
+        marginBottom: 15,
     },
     modalContainer: {
         width: '40%',
@@ -38,9 +46,14 @@ const styles = theme => ({
         backgroundColor: '#FEFEFE',
         margin: '20vh auto',
         padding: 20,
+        zIndex: 20000,
         [theme.breakpoints.down(1000)]: {
-            width: '85%',
+            width: '65%',
+            marginLeft: 250,
             maxWidth: 600,
+        },
+        [theme.breakpoints.down(710)]: {
+            margin: '20vh auto',
         },
         [theme.breakpoints.down(500)]: {
             width: '100%'
@@ -55,10 +68,10 @@ class DeleteModal extends React.Component {
         return (
             <div className={classes.container}>
                 <div className={classes.modalContainer}>
-                    <p className={classes.message}>Are you sure you want to delete this?</p>
+                    <p className={classes.message}>Are you sure you want to delete {this.props.name}?</p>
                     <div className={classes.buttonWrapper}>
-                        <Button onClick={props.delete} className={classes.deleteButton}>Delete</Button>
-                        <Button primary onClick={props.close} className={classes.cancelButton}>Cancel</Button>
+                        <Button variant='contained' onClick={this.props.delete} className={classes.deleteButton}>Delete</Button>
+                        <Button variant='contained' onClick={this.props.close} className={classes.cancelButton}>Cancel</Button>
                     </div>
                 </div>
             </div>

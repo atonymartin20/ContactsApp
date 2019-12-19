@@ -5,7 +5,12 @@ export const AppContext = React.createContext();
 
 export default class AppProvider extends Component {
     state = {
-        contacts: JSON.parse(localStorage.getItem('contacts')) || [],
+        // contacts: JSON.parse(localStorage.getItem('contacts')) || [],
+        contacts: [
+            { id: 1, firstName: 'Mark', lastName: 'yMark', phoneNumber: '6362477740', email: 'test@blah.com', notes: 'test' },
+            { id: 2, firstName: 'Mark', lastName: 'yMark', phoneNumber: '6362477740', email: 'longpersonname@longcompanyname.com', notes: 'Lets test this as well' },
+            { id: 3, firstName: 'Mark', lastName: 'yMark', phoneNumber: '6362477740', email: 'test@blah.com', notes: 'I wonder what happens when I write a really long note.  Already 2 lines ... lets see what happens oh I broke.' }
+        ]
     };
 
     render() {
@@ -71,7 +76,7 @@ export default class AppProvider extends Component {
                                 console.log('error editing contact', err);
                             })
                     },
-                    deleteContact: (index, cb) => {
+                    deleteContact: (index) => {
                         const contactID = this.state.contacts[index].id;
                         const endpoint = `/contacts/${contactID}`;
                         axios
@@ -83,6 +88,19 @@ export default class AppProvider extends Component {
                             .catch(err => {
                                 console.log('error deleting contact', err)
                             })
+                            const getEndpoint = '/contacts';
+                            axios
+                                .get(getEndpoint)
+                                .then(res => {
+                                    const contacts = res.data;
+                                    localStorage.setItem('contacts', JSON.stringify(contacts));
+                                    this.setState({
+                                        contacts
+                                    });
+                                })
+                                .catch(err => {
+                                    console.log('error getting contacts', err)
+                                });
                     },
                 }}
             >
