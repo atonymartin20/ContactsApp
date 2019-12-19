@@ -20,7 +20,6 @@ ReactDOM.render(
 );
 
 // TO DO LIST:
-// 2. Build add contact page
 // 3. Create on click for redirect on Edit button
 // 4. Create on Click for redirect on delete button
 // 5. Create on Click for redirect on clicking contact card not in icons

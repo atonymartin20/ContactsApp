@@ -112,7 +112,7 @@ class AddContact extends React.Component {
                 lastName: 'Contact'
             })
         }
-
+        this.context.addContact(firstName, lastName, phoneNumber, email, notes);
     }
 
     InputHandler = event => {
