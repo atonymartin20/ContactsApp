@@ -103,6 +103,7 @@ class ContactCard extends React.Component {
         phoneNumber: this.props.phoneNumber,
         email: this.props.email,
         notes: this.props.notes,
+        delete: false,
     }
 
     render() {
