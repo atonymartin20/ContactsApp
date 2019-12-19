@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ContactCard from './contactCard.js';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { AppContext } from '../context/appContext.js';
 
 const styles = theme => ({
     content: {
@@ -33,6 +34,7 @@ class ContactList extends React.Component {
                 <Grid container spacing={0}>
                     <Grid item xs={12}>
                         <Grid container justify='center' spacing={0}>
+                            {/*{this.context.state.contacts.map(contact => ( */}
                             {this.state.test.map(contact => (
                                 <Grid key={contact.id} item classes={{
                                     item: classes.item,
@@ -54,5 +56,7 @@ class ContactList extends React.Component {
         )
     }
 }
+
+ContactList.contextType = AppContext;
 
 export default withStyles(styles)(ContactList);
