@@ -115,8 +115,8 @@ class ContactCard extends React.Component {
                 <p className={classes.phoneNumber}>{phoneNumber}</p>
                 <p className={classes.email}>{email}</p>
                 <p className={classes.notes}>{notes}</p>
-                <p className={classes.icons}><Link to={{ pathname: '/addContact', state: {editFirstName: firstName, editLastName: lastName, editId: id, editPhoneNumber: phoneNumber, editEmail: email, editNotes: notes}}}><Button><MoreVertIcon className={classes.iconStyling}/></Button></Link></p>
-                <p className={classes.icons}><Button href='/addContact' data={this.state}><DeleteIcon className={classes.iconStyling}/></Button></p>
+                <p className={classes.icons}><Link to={{ pathname: '/editContact', state: {editFirstName: firstName, editLastName: lastName, editId: id, editPhoneNumber: phoneNumber, editEmail: email, editNotes: notes}}}><Button><MoreVertIcon className={classes.iconStyling}/></Button></Link></p>
+                <p className={classes.icons}><Button href='/deleteContact' data={this.state}><DeleteIcon className={classes.iconStyling}/></Button></p>
             </Card>
         )
     }

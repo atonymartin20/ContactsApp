@@ -20,8 +20,6 @@ ReactDOM.render(
 );
 
 // TO DO LIST:
-// 3. Create on click for redirect on Edit button
-// 4. Create on Click for redirect on delete button
 // 5. Create on Click for redirect on clicking contact card not in icons
 // 6. Add View one contact view
 // 7. Add edit contact view
