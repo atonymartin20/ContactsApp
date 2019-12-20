@@ -124,6 +124,7 @@ class AddContact extends React.Component {
             message: ''
         })
     }
+    
     render() {
         const { classes } = this.props;
 
@@ -165,11 +166,9 @@ class AddContact extends React.Component {
                             </form>
                         </CardContent>
                     </Card>
-
                 </div>
             </div>
         )
-
     }
 }
 

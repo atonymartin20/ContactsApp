@@ -75,6 +75,10 @@ const styles = theme => ({
             display: 'none'
         }
     },
+    linkStyling: {
+        textDecoration: 'none',
+        color: 'black',
+    },
     icons: {
         width: '5%',
         textAlign: 'center',
@@ -124,15 +128,15 @@ class ContactCard extends React.Component {
     
     render() {
         const { classes } = this.props;
-        const { firstName, lastName, phoneNumber, email, notes, id } = this.state;
+        const { firstName, lastName, phoneNumber, email, notes, id, index } = this.state;
 
         return (
             <>
                 <Card className={classes.container}>
-                    <p className={classes.name}>{firstName} {lastName}</p>
-                    <p className={classes.phoneNumber}>{phoneNumber}</p>
-                    <p className={classes.email}>{email}</p>
-                    <p className={classes.notes}>{notes}</p>
+                <p className={classes.name}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{firstName} {lastName}</Link></p>
+                    <p className={classes.phoneNumber}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{phoneNumber}</Link></p>
+                    <p className={classes.email}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{email}</Link></p>
+                    <p className={classes.notes}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{notes}</Link></p>
                     <p className={classes.icons}><Link to={{ pathname: '/editContact', state: { editFirstName: firstName, editLastName: lastName, editId: id, editPhoneNumber: phoneNumber, editEmail: email, editNotes: notes } }}><Button><MoreVertIcon className={classes.iconStyling} /></Button></Link></p>
                     <p className={classes.icons}><Button onClick={this.flipDelete}><DeleteIcon className={classes.iconStyling} /></Button></p>
                 </Card>
