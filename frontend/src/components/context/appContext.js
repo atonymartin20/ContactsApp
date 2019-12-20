@@ -37,11 +37,11 @@ export default class AppProvider extends Component {
                     addContact: (firstName, lastName, phoneNumber, email, notes, cb) => {
                         const endpoint = '/contacts';
                         let contact = {
-                            firstName: firstName || null,
-                            lastName: lastName || null,
-                            phoneNumber: phoneNumber || null,
-                            email: email || null,
-                            notes: notes || null,
+                            firstName: firstName || '',
+                            lastName: lastName || '',
+                            phoneNumber: phoneNumber || '',
+                            email: email || '',
+                            notes: notes || '',
                         };
                         axios
                             .post(endpoint, contact)
@@ -59,9 +59,16 @@ export default class AppProvider extends Component {
                                 console.log('error adding contact', err)
                             })
                     },
-                    editContact: (contactInfo, index, cb) => {
+                    editContact: (firstName, lastName, phoneNumber, email, notes, index, cb) => {
                         const contactID = this.state.contacts[index].id;
                         const endpoint = `/contacts/${contactID}`;
+                        let contactInfo = {
+                            firstName: firstName || '',
+                            lastName: lastName || '',
+                            phoneNumber: phoneNumber || '',
+                            email :email || '',
+                            notes: notes || ''
+                        }
                         axios
                             .put(endpoint, contactInfo)
                             .then(res => {

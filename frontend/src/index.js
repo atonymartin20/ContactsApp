@@ -20,9 +20,7 @@ ReactDOM.render(
 );
 
 // TO DO LIST:
-// 6. Create on Click for redirect on clicking contact card not in icons
 // 7. Add View one contact view
-// 8. Add edit contact view
 // 9. Complete in theory front end
 // 10. Begin working on backend
 // 11. run yarn

@@ -75,6 +75,11 @@ const styles = theme => ({
             display: 'none'
         }
     },
+    editLinkStyling: {
+        width: '100%',
+        textDecoration: 'none',
+        color: 'black',
+    },
     linkStyling: {
         textDecoration: 'none',
         color: 'black',
@@ -108,6 +113,7 @@ class ContactCard extends React.Component {
         email: this.props.email,
         notes: this.props.notes,
         delete: false,
+        edit: false,
         index: this.props.index,
     }
 
@@ -118,18 +124,24 @@ class ContactCard extends React.Component {
         })
     }
 
+    flipEdit = event => {
+        event.preventDefault();
+        this.setState({
+            edit: !this.state.edit
+        })
+    }
+
     deleteNote = event => {
         event.preventDefault();
         const { index } = this.state;
         this.context.deleteContact(index);
         window.location.href='/';
-
     }
     
     render() {
         const { classes } = this.props;
         const { firstName, lastName, phoneNumber, email, notes, id, index } = this.state;
-
+        
         return (
             <>
                 <Card className={classes.container}>
@@ -137,7 +149,7 @@ class ContactCard extends React.Component {
                     <p className={classes.phoneNumber}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{phoneNumber}</Link></p>
                     <p className={classes.email}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{email}</Link></p>
                     <p className={classes.notes}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{notes}</Link></p>
-                    <p className={classes.icons}><Link to={{ pathname: '/editContact', state: { editFirstName: firstName, editLastName: lastName, editId: id, editPhoneNumber: phoneNumber, editEmail: email, editNotes: notes } }}><Button><MoreVertIcon className={classes.iconStyling} /></Button></Link></p>
+                    <p className={classes.icons}><Button><Link to={{ pathname: `/editContact/${index}`, state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.editLinkStyling}><MoreVertIcon className={classes.iconStyling} /></Link></Button></p>
                     <p className={classes.icons}><Button onClick={this.flipDelete}><DeleteIcon className={classes.iconStyling} /></Button></p>
                 </Card>
                 {this.state.delete ? <DeleteModal name={`${firstName} ${lastName}`} delete={this.deleteNote} close={this.flipDelete} /> : null }

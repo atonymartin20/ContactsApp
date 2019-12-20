@@ -84,11 +84,11 @@ const styles = theme => ({
 
 class AddContact extends React.Component {
     state = {
-        firstName: null,
-        lastName: null,
-        phoneNumber: null,
-        email: null,
-        notes: null,
+        firstName: '',
+        lastName: '',
+        phoneNumber: '',
+        email: '',
+        notes: '',
         message: '',
         error: 0,
         focus: 1,
@@ -98,7 +98,7 @@ class AddContact extends React.Component {
         event.preventDefault();
         const { firstName, lastName, phoneNumber, email, notes } = this.state;
 
-        if(!firstName && !lastName && !phoneNumber && !email && !notes) {
+        if((!firstName && !lastName && !phoneNumber && !email && !notes) || (firstName === '' && lastName === '' && phoneNumber  === '' && email === '' && notes === '')) {
             this.setState({
                 message: 'All fields cannot be empty',
                 focus: 1,
@@ -153,7 +153,7 @@ class AddContact extends React.Component {
                                 </FormControl>
                                 <FormControl className={classes.inputFullWidth} error={this.state.error === 3 ? true: false}>
                                     <InputLabel htmlFor='phoneNumber' className={classes.inputLabelStyling}>Phone Number</InputLabel>
-                                    <Input id="phoneNumber" name="phoneNumber" onChange={this.InputHandler} className={classes.inputStyling} />
+                                    <Input id="phoneNumber" name="phoneNumber" onChange={this.InputHandler} className={classes.inputStyling} type="number" />
                                 </FormControl>
                                 <FormControl className={classes.inputFullWidth} error={this.state.error === 4 ? true: false}>
                                     <InputLabel htmlFor='email' className={classes.inputLabelStyling}>Email</InputLabel>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Homepage from './components/homepage';
 import AddContact from './components/contact/addContact.js';
-// import EditContact from './components/contact/editContact.js';
+import EditContact from './components/contact/editContact.js';
 // import ViewContact from './components/contact/viewContact.js';
 
 function App() {
@@ -15,10 +15,10 @@ function App() {
                 <Route exact path='/addContact'>
                     <AddContact />
                 </Route>
-                {/* <Route exact path='/editContact'>
-                    <EditContact />
-                </Route>
-                <Route exact path='/viewContact'>
+                <Route path='/editContact/:index' render={props => 
+                    <EditContact {...props} />
+                } />
+                {/* <Route exact path='/viewContact'>
                     <ViewContact />
                 </Route> */}
                 <Route>
