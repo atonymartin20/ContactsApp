@@ -161,7 +161,7 @@ class EditContact extends React.Component {
                             <form className={classes.form} onSubmit={this.SubmitHandler}>
                                 <FormControl className={classes.inputHalfWidth} error={this.state.error === 1 ? true: false}>
                                     <InputLabel htmlFor='firstName' className={classes.inputLabelStyling}>First Name</InputLabel>
-                                    <Input autoFocus id="firstName" name="firstName" onChange={this.InputHandler} value={this.state.firstName} className={classes.inputStyling} />
+                                    <Input id="firstName" name="firstName" onChange={this.InputHandler} value={this.state.firstName} className={classes.inputStyling} />
                                 </FormControl>
                                 <FormControl className={classes.inputHalfWidth} error={this.state.error === 2 ? true: false}>
                                     <InputLabel htmlFor='lastName' className={classes.inputLabelStyling}>Last Name</InputLabel>
