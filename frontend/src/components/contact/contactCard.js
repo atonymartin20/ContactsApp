@@ -75,14 +75,11 @@ const styles = theme => ({
             display: 'none'
         }
     },
-    editLinkStyling: {
+    linkStyling: {
         width: '100%',
         textDecoration: 'none',
         color: 'black',
-    },
-    linkStyling: {
-        textDecoration: 'none',
-        color: 'black',
+        display: 'inline-block',
     },
     icons: {
         width: '5%',
@@ -113,7 +110,6 @@ class ContactCard extends React.Component {
         email: this.props.email,
         notes: this.props.notes,
         delete: false,
-        edit: false,
         index: this.props.index,
     }
 
@@ -121,13 +117,6 @@ class ContactCard extends React.Component {
         event.preventDefault();
         this.setState({
             delete: !this.state.delete
-        })
-    }
-
-    flipEdit = event => {
-        event.preventDefault();
-        this.setState({
-            edit: !this.state.edit
         })
     }
 
@@ -145,11 +134,11 @@ class ContactCard extends React.Component {
         return (
             <>
                 <Card className={classes.container}>
-                <p className={classes.name}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{firstName} {lastName}</Link></p>
-                    <p className={classes.phoneNumber}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{phoneNumber}</Link></p>
-                    <p className={classes.email}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{email}</Link></p>
-                    <p className={classes.notes}><Link to={{ pathname: '/viewContact', state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{notes}</Link></p>
-                    <p className={classes.icons}><Button><Link to={{ pathname: `/editContact/${index}`, state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.editLinkStyling}><MoreVertIcon className={classes.iconStyling} /></Link></Button></p>
+                    <p className={classes.name}><Link to={{ pathname: `/viewContact/${index}`, state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{firstName} {lastName}</Link></p>
+                    <p className={classes.phoneNumber}><Link to={{ pathname: `/viewContact/${index}`, state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{phoneNumber}</Link></p>
+                    <p className={classes.email}><Link to={{ pathname: `/viewContact/${index}`, state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{email}</Link></p>
+                    <p className={classes.notes}><Link to={{ pathname: `/viewContact/${index}`, state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}>{notes}</Link></p>
+                    <p className={classes.icons}><Button><Link to={{ pathname: `/editContact/${index}`, state: { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, index: index, id: id, email: email, notes: notes}}} className={classes.linkStyling}><MoreVertIcon className={classes.iconStyling} /></Link></Button></p>
                     <p className={classes.icons}><Button onClick={this.flipDelete}><DeleteIcon className={classes.iconStyling} /></Button></p>
                 </Card>
                 {this.state.delete ? <DeleteModal name={`${firstName} ${lastName}`} delete={this.deleteNote} close={this.flipDelete} /> : null }
