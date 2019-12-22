@@ -22,37 +22,6 @@ const styles = theme => ({
         marginBottom: 3,
         minHeight: 35,
     },
-    name: {
-        width: '25%',
-        textAlign: 'center',
-        padding: '5px 10px',
-        [theme.breakpoints.down(1400)]: {
-            width: '32.5%'
-        },
-        [theme.breakpoints.down(1050)]: {
-            width: '40%',
-        },
-        [theme.breakpoints.down(950)]: {
-            width: '60%',
-        },
-        [theme.breakpoints.down(500)]: {
-            width: '100%',
-        },
-    },
-    phoneNumber: {
-        width: '20%',
-        textAlign: 'center',
-        padding: '5px 10px',
-        [theme.breakpoints.down(1400)]: {
-            width: '22.5%'
-        },
-        [theme.breakpoints.down(1052)]: {
-            width: '40%',
-        },
-        [theme.breakpoints.down(500)]: {
-            display: 'none',
-        },
-    },
     email: {
         width: '22.5%',
         textAlign: 'center',
@@ -65,21 +34,6 @@ const styles = theme => ({
         [theme.breakpoints.down(1052)]: {
             display: 'none',
         },
-    },
-    notes: {
-        width: '22.5%',
-        textAlign: 'center',
-        fontSize: '1.5rem',
-        padding: '5px 10px',
-        [theme.breakpoints.down(1400)]: {
-            display: 'none'
-        }
-    },
-    linkStyling: {
-        width: '100%',
-        textDecoration: 'none',
-        color: 'black',
-        display: 'inline-block',
     },
     icons: {
         width: '5%',
@@ -98,7 +52,53 @@ const styles = theme => ({
     iconStyling: {
         width: 25,
         height: 25,
-    }
+    },
+    linkStyling: {
+        width: '100%',
+        textDecoration: 'none',
+        color: 'black',
+        display: 'inline-block',
+    },
+    name: {
+        width: '25%',
+        textAlign: 'center',
+        padding: '5px 10px',
+        [theme.breakpoints.down(1400)]: {
+            width: '32.5%'
+        },
+        [theme.breakpoints.down(1050)]: {
+            width: '40%',
+        },
+        [theme.breakpoints.down(950)]: {
+            width: '60%',
+        },
+        [theme.breakpoints.down(500)]: {
+            width: '100%',
+        },
+    },
+    notes: {
+        width: '22.5%',
+        textAlign: 'center',
+        fontSize: '1.5rem',
+        padding: '5px 10px',
+        [theme.breakpoints.down(1400)]: {
+            display: 'none'
+        }
+    },
+    phoneNumber: {
+        width: '20%',
+        textAlign: 'center',
+        padding: '5px 10px',
+        [theme.breakpoints.down(1400)]: {
+            width: '22.5%'
+        },
+        [theme.breakpoints.down(1052)]: {
+            width: '40%',
+        },
+        [theme.breakpoints.down(500)]: {
+            display: 'none',
+        },
+    },
 });
 
 class ContactCard extends React.Component {

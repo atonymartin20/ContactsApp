@@ -20,8 +20,6 @@ ReactDOM.render(
 );
 
 // TO DO LIST:
-// 7. Add View one contact view
-// 9. Complete in theory front end
 // 10. Begin working on backend
 // 11. run yarn
 // 12. add cors, bcryptjs, express, helmet, knex, pg, sqlite3 as dependencies
