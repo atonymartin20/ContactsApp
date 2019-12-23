@@ -10,7 +10,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || '4000';
 
-app.use('/auth', authRouter);
+app.use('/contacts', contactRouter);
 
 
 app.get('/', (req, res) => {
