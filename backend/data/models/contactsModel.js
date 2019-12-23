@@ -7,6 +7,9 @@ module.exports = {
     findByID: id => {
         return db('contacts').where({ id }).firtst();
     },
+    getContacts: () => {
+        return db('contacts');
+    },
     update: (id, contact) => {
         return db('contacts').where({ id }).update(contact);
     },

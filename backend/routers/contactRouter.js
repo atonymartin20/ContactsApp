@@ -4,11 +4,23 @@ const contactsModel = require('../data/models/contactsModel.js');
 
 const router = express.Router();
 
-router.get
+router.get('/', (req, res) => {
+    contactsModel
+        .getContacts
+        .then(contacts => {
+            res.json(contacts);
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'Could not grab contacts', err });
+        });
+});
 
 router.post
 
-router.put
+router.put('/:id', (req, res) => {
+    const { id } = req.params;
+
+});
 
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
