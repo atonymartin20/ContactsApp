@@ -5,9 +5,9 @@ module.exports = {
         return db('contacts').insert(contact, 'id');
     },
     findByID: id => {
-        return db('contacts').where({ id }).firtst();
+        return db('contacts').where({ id }).first();
     },
-    getContacts: () => {
+    getContacts() {
         return db('contacts');
     },
     update: (id, contact) => {

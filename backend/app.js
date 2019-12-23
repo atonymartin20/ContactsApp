@@ -8,7 +8,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT || '4000';
+const PORT = process.env.PORT || '6999';
 
 app.use('/contacts', contactRouter);
 

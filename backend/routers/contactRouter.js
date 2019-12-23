@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     contactsModel
-        .getContacts
+        .getContacts()
         .then(contacts => {
             res.json(contacts);
         })
