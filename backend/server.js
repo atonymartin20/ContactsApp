@@ -13,3 +13,4 @@ app.listen(PORT, () => {
 // 18. Add Migrations
 // 19. Add Seeds
 // 20. Add Helpers
+// 21. Add Models
