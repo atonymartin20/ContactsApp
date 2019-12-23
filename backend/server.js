@@ -7,10 +7,8 @@ app.listen(PORT, () => {
 });
 
 // TO DO LIST:
-// 15. add index.js
 // 16. Update heroku in this index.js and in README.md
 // 17. Need at add Routers
 // 18. Add Migrations
 // 19. Add Seeds
-// 20. Add Helpers
 // 21. Add Models

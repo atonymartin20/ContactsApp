@@ -3,7 +3,7 @@
 module.exports = {
 
   development: {
-    client: 'pg',
+    client: 'sqlite3',
     connection: {
       filename: './data/dev.sqlite3'
     },
@@ -12,7 +12,7 @@ module.exports = {
       directory:'./data/migrations'
     },
     seeds:{
-      directory:'./data/seeds/dev'
+      directory:'./data/seeds'
     }
   },
 
@@ -27,7 +27,7 @@ module.exports = {
       directory: './data/migrations'
     },
     seeds:{
-      directory: './data/seeds/prod'
+      directory: './data/seeds'
     }
   },
 
@@ -41,7 +41,7 @@ module.exports = {
       directory:'./data/migrations'
     },
     seeds:{
-      directory:'./data/seeds/test'
+      directory:'./data/seeds'
     }
   },
 
