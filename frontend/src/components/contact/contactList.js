@@ -2,10 +2,10 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ContactCard from './contactCard.js';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { AppContext } from '../context/appContext.js';
 
 const styles = theme => ({
     content: {
-        height: 50,
         padding: 0,
         width: '100%',
     },
@@ -17,14 +17,6 @@ const styles = theme => ({
 })
 
 class ContactList extends React.Component {
-    state = {
-        test: [
-            { id: 1, firstName: 'Mark', lastName: 'yMark', phoneNumber: '6362477740', email: 'test@blah.com', notes: 'test' },
-            { id: 1, firstName: 'Mark', lastName: 'yMark', phoneNumber: '6362477740', email: 'longpersonname@longcompanyname.com', notes: 'Lets test this as well' },
-            { id: 1, firstName: 'Mark', lastName: 'yMark', phoneNumber: '6362477740', email: 'test@blah.com', notes: 'I wonder what happens when I write a really long note.  Already 2 lines ... lets see what happens oh I broke.' }
-        ]
-    };
-
     render() {
         const { classes } = this.props;
 
@@ -33,7 +25,7 @@ class ContactList extends React.Component {
                 <Grid container spacing={0}>
                     <Grid item xs={12}>
                         <Grid container justify='center' spacing={0}>
-                            {this.state.test.map(contact => (
+                            {this.context.state.contacts.map((contact, index) => (
                                 <Grid key={contact.id} item classes={{
                                     item: classes.item,
                                 }}>
@@ -44,6 +36,7 @@ class ContactList extends React.Component {
                                         phoneNumber={contact.phoneNumber}
                                         email={contact.email}
                                         notes={contact.notes}
+                                        index={index}
                                     />
                                 </Grid>
                             ))}
@@ -54,5 +47,7 @@ class ContactList extends React.Component {
         )
     }
 }
+
+ContactList.contextType = AppContext;
 
 export default withStyles(styles)(ContactList);

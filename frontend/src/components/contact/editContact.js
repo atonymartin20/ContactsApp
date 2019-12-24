@@ -37,6 +37,16 @@ const styles = theme => ({
         flexWrap: 'wrap',
         backgroundColor: '#ffd8b1',
     },
+    container: {
+        position: 'fixed',
+        zIndex: 1,
+        left: 0,
+        top: 0,
+        width: '100%',
+        height: '100%',
+        overflow: 'auto',
+        backgroundColor: 'rgba(43, 43, 43, 0.3)'
+    },
     form: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -82,42 +92,46 @@ const styles = theme => ({
     },
 });
 
-class AddContact extends React.Component {
-    state = {
-        firstName: '',
-        lastName: '',
-        phoneNumber: '',
-        email: '',
-        notes: '',
-        message: '',
-        error: 0,
-        focus: 1,
+class EditContact extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: this.props.location.state.firstName || '',
+            lastName: this.props.location.state.lastName || '',
+            phoneNumber: this.props.location.state.phoneNumber || '',
+            email: this.props.location.state.email || '',
+            notes: this.props.location.state.notes || '',
+            index: this.props.location.state.index,
+            id: this.props.location.state.id,
+            message: '',
+            error: 0,
+            focus: 1,
+        }
     }
 
     SubmitHandler = event => {
         event.preventDefault();
-        const { firstName, lastName, phoneNumber, email, notes } = this.state;
+        const { firstName, lastName, phoneNumber, email, notes, index } = this.state;
 
-        if ((!firstName && !lastName && !phoneNumber && !email && !notes) || (firstName === '' && lastName === '' && phoneNumber === '' && email === '' && notes === '')) {
+        if(!firstName && !lastName && !phoneNumber && !email && !notes) {
             this.setState({
                 message: 'All fields cannot be empty',
                 focus: 1,
                 error: 1,
             })
         }
-
         else if ((firstName === null && lastName === null) || (firstName === '' && lastName === '') || (!firstName && !lastName)) {
             this.setState({
                 firstName: 'Unknown',
                 lastName: 'Contact'
             })
-            this.context.addContact('Unknown', 'Contact', phoneNumber, email, notes, () => {
+            this.context.editContact('Unknown', 'Contact', phoneNumber, email, notes, index, () => {
                 window.location.href='/'
                 return null;
             });
         }
         else {
-            this.context.addContact(firstName, lastName, phoneNumber, email, notes, () => {
+            this.context.editContact(firstName, lastName, phoneNumber, email, notes, index, () => {
                 window.location.href='/'
                 return null;
             });
@@ -136,7 +150,6 @@ class AddContact extends React.Component {
 
     render() {
         const { classes } = this.props;
-
         const labelStyle = {
             fontSize: '1.5rem'
         }
@@ -152,35 +165,36 @@ class AddContact extends React.Component {
                         <CardContent>
                             <p className={classes.message}>{this.state.message}</p>
                             <form className={classes.form} onSubmit={this.SubmitHandler}>
-                                <FormControl className={classes.inputHalfWidth} error={this.state.error === 1 ? true : false}>
+                                <FormControl className={classes.inputHalfWidth} error={this.state.error === 1 ? true: false}>
                                     <InputLabel htmlFor='firstName' className={classes.inputLabelStyling}>First Name</InputLabel>
-                                    <Input autoFocus id="firstName" name="firstName" onChange={this.InputHandler} className={classes.inputStyling} />
+                                    <Input id="firstName" name="firstName" onChange={this.InputHandler} value={this.state.firstName} className={classes.inputStyling} />
                                 </FormControl>
-                                <FormControl className={classes.inputHalfWidth} error={this.state.error === 2 ? true : false}>
+                                <FormControl className={classes.inputHalfWidth} error={this.state.error === 2 ? true: false}>
                                     <InputLabel htmlFor='lastName' className={classes.inputLabelStyling}>Last Name</InputLabel>
-                                    <Input id="lastName" name="lastName" onChange={this.InputHandler} className={classes.inputStyling} />
+                                    <Input id="lastName" name="lastName" onChange={this.InputHandler} value={this.state.lastName} className={classes.inputStyling} />
                                 </FormControl>
-                                <FormControl className={classes.inputFullWidth} error={this.state.error === 3 ? true : false}>
+                                <FormControl className={classes.inputFullWidth} error={this.state.error === 3 ? true: false}>
                                     <InputLabel htmlFor='phoneNumber' className={classes.inputLabelStyling}>Phone Number</InputLabel>
-                                    <Input id="phoneNumber" name="phoneNumber" onChange={this.InputHandler} className={classes.inputStyling} type="number" />
+                                    <Input id="phoneNumber" name="phoneNumber" onChange={this.InputHandler} value={this.state.phoneNumber} className={classes.inputStyling} type="number"/>
                                 </FormControl>
-                                <FormControl className={classes.inputFullWidth} error={this.state.error === 4 ? true : false}>
+                                <FormControl className={classes.inputFullWidth} error={this.state.error === 4 ? true: false}>
                                     <InputLabel htmlFor='email' className={classes.inputLabelStyling}>Email</InputLabel>
-                                    <Input id="email" name="email" onChange={this.InputHandler} className={classes.inputStyling} />
+                                    <Input id="email" name="email" onChange={this.InputHandler} value={this.state.email} className={classes.inputStyling} />
                                 </FormControl>
-                                <FormControl className={classes.inputFullWidth} error={this.state.error === 5 ? true : false}>
-                                    <TextField multiline id="notes" name="notes" label="Notes" onChange={this.InputHandler} className={classes.inputStyling} InputLabelProps={{ style: labelStyle }} InputProps={{ style: textFieldStyle }} />
+                                <FormControl className={classes.inputFullWidth} error={this.state.error === 5 ? true: false}>
+                                    <TextField multiline id="notes" name="notes" label="Notes" onChange={this.InputHandler} value={this.state.notes} className={classes.inputStyling} InputLabelProps={{ style: labelStyle }} InputProps={{ style: textFieldStyle }} />
                                 </FormControl>
-                                <Button type='submit' variant='contained' className={classes.submitButton}>Submit</Button>
+                                <Button type='submit' variant='contained' className={classes.submitButton}>Edit</Button>
                             </form>
                         </CardContent>
                     </Card>
+
                 </div>
             </div>
         )
     }
 }
 
-AddContact.contextType = AppContext;
+EditContact.contextType = AppContext;
 
-export default withStyles(styles)(AddContact);
+export default withStyles(styles)(EditContact);
