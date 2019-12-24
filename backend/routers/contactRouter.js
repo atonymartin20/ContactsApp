@@ -27,7 +27,19 @@ router.get('/:id', (req, res) => {
         });
 });
 
-router.post
+router.post('/', (req, res) => {
+    const contact = req.body;
+    contactsModel
+        .insert(contact)
+        .then(contact => {
+            res.status(201).json(contact);
+        })
+        .catch(err => {
+            res.status(404).json({
+                error: 'Trouble creating contact', err
+            });
+        });
+})
 
 router.put('/:id', (req, res) => {
     const { id } = req.params;
