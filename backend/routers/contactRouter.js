@@ -15,6 +15,18 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    contactsModel
+        .findByID(id)
+        .then(contact => {
+            res.json(contact);
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'Could not find contact', err });
+        });
+});
+
 router.post
 
 router.put('/:id', (req, res) => {
