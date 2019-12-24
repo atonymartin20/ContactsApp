@@ -43,7 +43,27 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     const { id } = req.params;
-
+    const contact = req.body;
+    contactsModel
+        .update(id, contact)
+        .then(updatedContact => {
+            if(updatedContact) {
+                contactsModel
+                    .findByID(id)
+                    .then(contact => {
+                        res.json(contact);
+                    })
+                    .catch(err => {
+                        res.status(500).json({ error: 'Could not return updated Contact.', err });
+                    });
+            }
+            else {
+                res.status(404).json({ error: 'Contact with this id does not exist.', err });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'Contact will not be modified.', err });
+        });
 });
 
 router.delete('/:id', (req, res) => {
