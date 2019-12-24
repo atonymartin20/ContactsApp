@@ -43,7 +43,6 @@ export default class AppProvider extends Component {
                             .then(res => {
                                 contact = res.data;
                                 const joined = this.state.contacts.concat(contact);
-                                // const index = joined.length - 1;
                                 localStorage.setItem('contacts', JSON.stringify(joined));
                                 this.setState({
                                     contacts: joined

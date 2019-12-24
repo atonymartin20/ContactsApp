@@ -117,7 +117,6 @@ class AddContact extends React.Component {
             });
         }
         else {
-            console.log(` firstName: ${firstName} \n`, `lastName: ${lastName}\n`, `phoneNumber: ${phoneNumber} \n`, `email: ${email} \n`, `notes: ${notes}`)
             this.context.addContact(firstName, lastName, phoneNumber, email, notes, () => {
                 window.location.href='/'
                 return null;

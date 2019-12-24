@@ -122,7 +122,6 @@ class ContactCard extends React.Component {
     deleteNote = event => {
         event.preventDefault();
         const { index } = this.state;
-        console.log(index)
         this.context.deleteContact(index);
         window.location.href='/';
     }

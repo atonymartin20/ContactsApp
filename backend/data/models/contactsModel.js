@@ -8,7 +8,7 @@ module.exports = {
         return db('contacts').where({ id }).first();
     },
     getContacts() {
-        return db('contacts');
+        return db('contacts').orderBy('firstName');
     },
     update: (id, contact) => {
         return db('contacts').where({ id }).update(contact);
