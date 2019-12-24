@@ -14,12 +14,11 @@ const styles = theme => ({
     container: {
         width: '100%',
         padding: 0,
-        margin: 0,
+        margin: '2px 0',
         display: 'flex',
         justifyContent: 'flex-start',
         alignItems: 'center',
         fontSize: '1.75rem',
-        marginBottom: 3,
         minHeight: 35,
     },
     email: {
@@ -123,6 +122,7 @@ class ContactCard extends React.Component {
     deleteNote = event => {
         event.preventDefault();
         const { index } = this.state;
+        console.log(index)
         this.context.deleteContact(index);
         window.location.href='/';
     }

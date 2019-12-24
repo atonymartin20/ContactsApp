@@ -6,7 +6,6 @@ import { AppContext } from '../context/appContext.js';
 
 const styles = theme => ({
     content: {
-        height: 50,
         padding: 0,
         width: '100%',
     },

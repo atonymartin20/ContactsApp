@@ -6,11 +6,6 @@ export const AppContext = React.createContext();
 export default class AppProvider extends Component {
     state = {
         contacts: JSON.parse(localStorage.getItem('contacts')) || [],
-        // contacts: [
-        //     { id: 1, firstName: 'Mark', lastName: 'yMark', phoneNumber: '6362477740', email: 'test@blah.com', notes: 'test' },
-        //     { id: 2, firstName: 'Mark', lastName: 'yMark', phoneNumber: '6362477740', email: 'longpersonname@longcompanyname.com', notes: 'Lets test this as well' },
-        //     { id: 3, firstName: 'Mark', lastName: 'yMark', phoneNumber: '6362477740', email: 'test@blah.com', notes: 'I wonder what happens when I write a really long note.  Already 2 lines ... lets see what happens oh I broke.' }
-        // ]
     };
 
     render() {
@@ -48,12 +43,12 @@ export default class AppProvider extends Component {
                             .then(res => {
                                 contact = res.data;
                                 const joined = this.state.contacts.concat(contact);
-                                const index = joined.length - 1;
+                                // const index = joined.length - 1;
                                 localStorage.setItem('contacts', JSON.stringify(joined));
                                 this.setState({
                                     contacts: joined
                                 });
-                                cb(index);
+                                cb();
                             })
                             .catch(err => {
                                 console.log('error adding contact', err)
@@ -75,7 +70,7 @@ export default class AppProvider extends Component {
                                 const contact = res.data;
                                 const contacts = this.state.contacts;
                                 contacts[index] = contact;
-                                localStorage.setItem('leagues', JSON.stringify(contacts));
+                                localStorage.setItem('contacts', JSON.stringify(contacts));
                                 this.setState({ contacts });
                                 cb();
                             })
@@ -85,6 +80,7 @@ export default class AppProvider extends Component {
                     },
                     deleteContact: (index) => {
                         const contactID = this.state.contacts[index].id;
+                        console.log(contactID)
                         const endpoint = `/contacts/${contactID}`;
                         axios
                             .delete(endpoint)

@@ -112,8 +112,6 @@ class EditContact extends React.Component {
     SubmitHandler = event => {
         event.preventDefault();
         const { firstName, lastName, phoneNumber, email, notes, index } = this.state;
-        let onlyNumberPhoneNumber = phoneNumber;
-        onlyNumberPhoneNumber = onlyNumberPhoneNumber.replace(/[^0-9]/g, '');
 
         if(!firstName && !lastName && !phoneNumber && !email && !notes) {
             this.setState({
@@ -122,14 +120,22 @@ class EditContact extends React.Component {
                 error: 1,
             })
         }
-
-        else if((firstName === null && lastName === null) || (firstName === '' || lastName === '')) {
+        else if ((firstName === null && lastName === null) || (firstName === '' && lastName === '') || (!firstName && !lastName)) {
             this.setState({
                 firstName: 'Unknown',
                 lastName: 'Contact'
             })
+            this.context.editContact('Unknown', 'Contact', phoneNumber, email, notes, index, () => {
+                window.location.href='/'
+                return null;
+            });
         }
-        this.context.editContact(firstName, lastName, onlyNumberPhoneNumber, email, notes, index);
+        else {
+            this.context.editContact(firstName, lastName, phoneNumber, email, notes, index, () => {
+                window.location.href='/'
+                return null;
+            });
+        }
     }
 
     InputHandler = event => {
@@ -169,7 +175,7 @@ class EditContact extends React.Component {
                                 </FormControl>
                                 <FormControl className={classes.inputFullWidth} error={this.state.error === 3 ? true: false}>
                                     <InputLabel htmlFor='phoneNumber' className={classes.inputLabelStyling}>Phone Number</InputLabel>
-                                    <Input id="phoneNumber" name="phoneNumber" onChange={this.InputHandler} value={this.state.phoneNumber} className={classes.inputStyling} />
+                                    <Input id="phoneNumber" name="phoneNumber" onChange={this.InputHandler} value={this.state.phoneNumber} className={classes.inputStyling} type="number"/>
                                 </FormControl>
                                 <FormControl className={classes.inputFullWidth} error={this.state.error === 4 ? true: false}>
                                     <InputLabel htmlFor='email' className={classes.inputLabelStyling}>Email</InputLabel>

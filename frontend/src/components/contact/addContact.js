@@ -98,7 +98,7 @@ class AddContact extends React.Component {
         event.preventDefault();
         const { firstName, lastName, phoneNumber, email, notes } = this.state;
 
-        if((!firstName && !lastName && !phoneNumber && !email && !notes) || (firstName === '' && lastName === '' && phoneNumber  === '' && email === '' && notes === '')) {
+        if ((!firstName && !lastName && !phoneNumber && !email && !notes) || (firstName === '' && lastName === '' && phoneNumber === '' && email === '' && notes === '')) {
             this.setState({
                 message: 'All fields cannot be empty',
                 focus: 1,
@@ -106,13 +106,23 @@ class AddContact extends React.Component {
             })
         }
 
-        else if((firstName === null && lastName === null) || (firstName === '' || lastName === '')) {
+        else if ((firstName === null && lastName === null) || (firstName === '' && lastName === '') || (!firstName && !lastName)) {
             this.setState({
                 firstName: 'Unknown',
                 lastName: 'Contact'
             })
+            this.context.addContact('Unknown', 'Contact', phoneNumber, email, notes, () => {
+                window.location.href='/'
+                return null;
+            });
         }
-        this.context.addContact(firstName, lastName, phoneNumber, email, notes);
+        else {
+            console.log(` firstName: ${firstName} \n`, `lastName: ${lastName}\n`, `phoneNumber: ${phoneNumber} \n`, `email: ${email} \n`, `notes: ${notes}`)
+            this.context.addContact(firstName, lastName, phoneNumber, email, notes, () => {
+                window.location.href='/'
+                return null;
+            });
+        }
     }
 
     InputHandler = event => {
@@ -124,7 +134,7 @@ class AddContact extends React.Component {
             message: ''
         })
     }
-    
+
     render() {
         const { classes } = this.props;
 
@@ -143,23 +153,23 @@ class AddContact extends React.Component {
                         <CardContent>
                             <p className={classes.message}>{this.state.message}</p>
                             <form className={classes.form} onSubmit={this.SubmitHandler}>
-                                <FormControl className={classes.inputHalfWidth} error={this.state.error === 1 ? true: false}>
+                                <FormControl className={classes.inputHalfWidth} error={this.state.error === 1 ? true : false}>
                                     <InputLabel htmlFor='firstName' className={classes.inputLabelStyling}>First Name</InputLabel>
                                     <Input autoFocus id="firstName" name="firstName" onChange={this.InputHandler} className={classes.inputStyling} />
                                 </FormControl>
-                                <FormControl className={classes.inputHalfWidth} error={this.state.error === 2 ? true: false}>
+                                <FormControl className={classes.inputHalfWidth} error={this.state.error === 2 ? true : false}>
                                     <InputLabel htmlFor='lastName' className={classes.inputLabelStyling}>Last Name</InputLabel>
                                     <Input id="lastName" name="lastName" onChange={this.InputHandler} className={classes.inputStyling} />
                                 </FormControl>
-                                <FormControl className={classes.inputFullWidth} error={this.state.error === 3 ? true: false}>
+                                <FormControl className={classes.inputFullWidth} error={this.state.error === 3 ? true : false}>
                                     <InputLabel htmlFor='phoneNumber' className={classes.inputLabelStyling}>Phone Number</InputLabel>
                                     <Input id="phoneNumber" name="phoneNumber" onChange={this.InputHandler} className={classes.inputStyling} type="number" />
                                 </FormControl>
-                                <FormControl className={classes.inputFullWidth} error={this.state.error === 4 ? true: false}>
+                                <FormControl className={classes.inputFullWidth} error={this.state.error === 4 ? true : false}>
                                     <InputLabel htmlFor='email' className={classes.inputLabelStyling}>Email</InputLabel>
                                     <Input id="email" name="email" onChange={this.InputHandler} className={classes.inputStyling} />
                                 </FormControl>
-                                <FormControl className={classes.inputFullWidth} error={this.state.error === 5 ? true: false}>
+                                <FormControl className={classes.inputFullWidth} error={this.state.error === 5 ? true : false}>
                                     <TextField multiline id="notes" name="notes" label="Notes" onChange={this.InputHandler} className={classes.inputStyling} InputLabelProps={{ style: labelStyle }} InputProps={{ style: textFieldStyle }} />
                                 </FormControl>
                                 <Button type='submit' variant='contained' className={classes.submitButton}>Submit</Button>

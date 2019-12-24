@@ -7,8 +7,8 @@ import axios from 'axios';
 import AppProvider from './components/context/appContext.js';
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'production'
-? 'https://league-management.herokuapp.com'
-: 'http://localhost:4000';
+? 'https://league-management.herokuapp.com' //Needs updating to new heroku url
+: 'http://localhost:6999';
 
 ReactDOM.render(
     <AppProvider>
