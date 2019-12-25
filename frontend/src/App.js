@@ -14,22 +14,17 @@ class App extends React.Component {
         return (
             <div>
                 <Switch>
-                    <Route exact path='/'>
-                        <Homepage />
-                    </Route>
-                    <Route path='/add'>
-                        <AddContact />
-                        <Homepage />
-                    </Route>
+                    <Route exact path='/' component={<Homepage />} />
+
+                    <Route path='/addContact' component={<AddContact />} />
+
                     <Route path='/editContact/:index' render={props => 
                         <EditContact {...props} />
                     } />
                     <Route path='/viewContact/:index' render={props => 
                         <ViewContact {...props} />
                     } />
-                    <Route>
-                        <Homepage />
-                    </Route>
+                    <Route component={<Homepage />} />
                 </Switch>
             </div>
         );
