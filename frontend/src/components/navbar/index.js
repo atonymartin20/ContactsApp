@@ -332,6 +332,7 @@ class Navbar extends React.Component {
                                 </ListItem>
                                 <ListItem className={classes.permanentDrawerListItem}>
                                     <Button
+                                        // onClick="window.location.href='/addContact'"
                                         href='/addContact'
                                         className={classes.permanentDrawerNavLink}
                                     >
