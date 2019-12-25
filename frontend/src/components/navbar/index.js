@@ -272,7 +272,7 @@ class Navbar extends React.Component {
                     </ListItem>
                     <ListItem className={classes.drawerListItem}>
                         <Button
-                            href='/addContact'
+                            href='/add'
                             className={classes.drawerNavLink}
                         >
                             Add Contact
@@ -332,11 +332,11 @@ class Navbar extends React.Component {
                                 </ListItem>
                                 <ListItem className={classes.permanentDrawerListItem}>
                                     <Button
-                                        href='/addContact'
+                                        href='/add'
                                         className={classes.permanentDrawerNavLink}
                                     >
                                         Add Contact
-                        </Button>
+                                    </Button>
                                 </ListItem>
                             </List>
                         </Drawer>
