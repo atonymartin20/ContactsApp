@@ -7,7 +7,7 @@ import axios from 'axios';
 import AppProvider from './components/context/appContext.js';
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'production'
-? 'https://contacts-app-adm.herokuapp.com' 
+? 'https://contacts-app-adm.herokuapp.com/api' 
 : 'http://localhost:6999';
 
 ReactDOM.render(
