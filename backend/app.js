@@ -1,4 +1,5 @@
 const express = require('express');
+require("dotenv").config();
 const app = express();
 
 const contactRouter = require('./routers/contactRouter');
@@ -10,7 +11,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || '6999';
 
-app.use('/contacts', contactRouter);
+app.use('/api/contacts', contactRouter);
 
 
 app.get('/', (req, res) => {
