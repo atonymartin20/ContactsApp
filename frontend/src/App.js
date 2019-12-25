@@ -18,8 +18,7 @@ class App extends React.Component {
                         <Homepage />
                     </Route>
                     <Route path='/addContact' component={AddContact} />
-                        {/* <AddContact />
-                    </Route> */}
+
                     <Route path='/editContact/:index' render={props => 
                         <EditContact {...props} />
                     } />

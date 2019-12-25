@@ -100,7 +100,6 @@ const styles = theme => ({
             justifyContent: "flex-start"
         },
         "&:hover,&:focus": {
-            // backgroundColor: "#000080",
             backgroundColor: "#AA1649",
             color: "white"
         },
@@ -281,7 +280,6 @@ class Navbar extends React.Component {
                     <ListItem className={classes.drawerListItem}>
                         <Link to='/addContact' className={classes.linkStyling}>
                             <Button
-                                // href='/addContact'
                                 className={classes.drawerNavLink}
                             >
                                 Add Contact
@@ -343,7 +341,6 @@ class Navbar extends React.Component {
                                 <ListItem className={classes.permanentDrawerListItem}>
                                     <Link to='/addContact' className={classes.linkStyling}>
                                         <Button
-                                            // href='/addContact'
                                             className={classes.permanentDrawerNavLink}
                                             >
                                             Add Contact
