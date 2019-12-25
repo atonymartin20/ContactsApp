@@ -17,4 +17,4 @@ Please do not put anyone's actual contact details in this app.  This app is desi
 
 # Resources
 * [Front End Site - Hosted on Netlify](https://contacts-app-adm.netlify.com/)
-* [Back End Site - Hosted on Heroku](https://league-management.herokuapp.com/)
+* [Back End Site - Hosted on Heroku](https://contacts-app-adm.herokuapp.com/)
