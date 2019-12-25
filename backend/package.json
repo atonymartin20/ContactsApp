@@ -24,6 +24,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon"
+    "server": "nodemon", 
+    "batch": "knex migrate:rollback && knex migrate:latest"
   }
 }
