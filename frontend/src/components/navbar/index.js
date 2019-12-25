@@ -11,6 +11,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Toolbar from "@material-ui/core/Toolbar";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { Link } from 'react-router-dom';
 
 // @material-ui/icons
 import MenuIcon from "@material-ui/icons/Menu";
@@ -126,6 +127,13 @@ const styles = theme => ({
         [theme.breakpoints.down(710)]: {
             display: 'none'
         }
+    },
+    linkStyling: {
+        textDecoration: 'none',
+        width: '100%',
+        color: 'black',
+        display: 'flex',
+        justifyContent: 'center',
     },
     logo: {
         fontFamily: "Rye, cursive",
@@ -271,12 +279,14 @@ class Navbar extends React.Component {
                         </Button>
                     </ListItem>
                     <ListItem className={classes.drawerListItem}>
-                        <Button
-                            href='/addContact'
-                            className={classes.drawerNavLink}
-                        >
-                            Add Contact
-                        </Button>
+                        <Link to='/addContact' className={classes.linkStyling}>
+                            <Button
+                                // href='/addContact'
+                                className={classes.drawerNavLink}
+                            >
+                                Add Contact
+                            </Button>
+                        </Link>
                     </ListItem>
                 </List>
             </div>
@@ -331,13 +341,14 @@ class Navbar extends React.Component {
                                     </Button>
                                 </ListItem>
                                 <ListItem className={classes.permanentDrawerListItem}>
-                                    <Button
-                                        // onClick="window.location.href='/addContact'"
-                                        href='/addContact'
-                                        className={classes.permanentDrawerNavLink}
-                                    >
-                                        Add Contact
-                                    </Button>
+                                    <Link to='/addContact' className={classes.linkStyling}>
+                                        <Button
+                                            // href='/addContact'
+                                            className={classes.permanentDrawerNavLink}
+                                            >
+                                            Add Contact
+                                        </Button>
+                                    </Link>
                                 </ListItem>
                             </List>
                         </Drawer>
