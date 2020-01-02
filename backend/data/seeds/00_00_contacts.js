@@ -21,5 +21,12 @@ exports.seed = function(knex, Promise) {
             email: 'NHulkenberg@Renault.com',
             notes: 'Looking for a job on a proper F1 team.',
         },
+        {
+            firstName: 'Unknown',
+            lastName: 'Contact',
+            phoneNumber: '',
+            email: '',
+            notes: 'Please do not put in any real contact information in this app.'
+        },
     ]);
 };
