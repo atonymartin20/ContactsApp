@@ -118,6 +118,7 @@ const styles = theme => ({
         }
     },
     drawerPaper: {
+        marginTop: 65,
         width: '100%',
         backgroundColor: '#E2E2E2',
         color: 'black',
