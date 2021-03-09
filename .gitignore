@@ -1,2 +1,3 @@
 
 backend/data/dev.sqlite3
+*.sqlite3
