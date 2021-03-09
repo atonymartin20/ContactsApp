@@ -20,8 +20,8 @@ module.exports = {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     pool: {
-      min: 2,
-      max: 10
+      min: 1,
+      max: 20
     },
     migrations: {
       directory: './data/migrations',
